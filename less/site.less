@@ -1,0 +1,72 @@
+// Site-specific customisations
+
+.navbar-rkm {
+  &:extend(.navbar-default all);
+  border: none;
+}
+
+#content p /*, h1, h2, h3, h4, h5, h6 */ {
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  text-align: justify;
+}
+
+pre {
+  color: @base00;
+  background-color: #eee8d5;
+  overflow: auto;
+  word-wrap: normal;
+}
+
+pre span.org-builtin {
+  color: @base00;
+  font-weight: bold;
+}
+
+pre span.org-comment {
+  color: @base1;
+}
+
+pre span.org-comment-delimiter {
+  color: @base1;
+}
+
+pre span.org-constant {
+  color: @blue;
+  font-weight: bold;
+}
+
+pre span.org-doc {
+  color: @cyan;
+}
+
+pre span.org-function-name {
+  color: @blue;
+}
+
+pre span.org-keyword {
+  color: @green;
+  font-weight: bold;
+}
+
+pre span.org-org-macro {
+  color: @orange;
+}
+
+pre span.org-preprocessor {
+  color: @blue;
+}
+
+pre span.org-string {
+  color: @cyan;
+}
+
+pre span.org-type {
+  color: @yellow;
+}
+
+pre span.org-variable-name {
+  color: @blue;
+}
