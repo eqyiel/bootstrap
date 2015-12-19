@@ -101,11 +101,11 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
-        stripBanners: false
-      },
       bootstrap: {
+        options: {
+          banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+          stripBanners: false
+        },
         src: [
           'js/transition.js',
           // 'js/alert.js',
@@ -121,6 +121,14 @@ module.exports = function (grunt) {
           // 'js/affix.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
+      },
+      // concat jquery and bootstrap so we only have to serve one file
+      jquery: {
+        src: [
+          './node_modules/jquery/dist/jquery.min.js',
+          'dist/js/<%= pkg.name %>.min.js'
+        ],
+        dest: 'dist/js/<%= pkg.name %>.min.js'
       }
     },
 
@@ -360,7 +368,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:core', 'qunit', 'concat']
+        tasks: ['jshint:core', 'qunit', 'concat:bootstrap']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -473,7 +481,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat:bootstrap', 'uglify:core', 'commonjs', 'concat:jquery']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
