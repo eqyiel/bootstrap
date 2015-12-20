@@ -1,8 +1,23 @@
 // Site-specific customisations
+@import "variables.less";
 
 .navbar-rkm {
   &:extend(.navbar-default all);
   border: none;
+}
+
+h1 .permalink, h2 .permalink,
+h3 .permalink, h4 .permalink,
+h5 .permalink, h6 .permalink {
+  display: none;
+  visibility: hidden;
+}
+
+h1:hover .permalink, h2:hover .permalink,
+h3:hover .permalink, h4:hover .permalink,
+h5:hover .permalink, h6:hover .permalink {
+  display: inline;
+  visibility: visible;
 }
 
 #content p /*, h1, h2, h3, h4, h5, h6 */ {
